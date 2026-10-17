@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b19">
+<title>For My Love ♡</title>
+<style>
+:root {
+  --bg:#100b19;
+  --panel:#1c1427;
+  --pink:#ff8fb8;
+  --soft:#ffd5e5;
+  --text:#fff2f7;
+  --muted:#c2b1ca;
+  --gold:#f6d6a8;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:radial-gradient(ellipse at top,#35203f 0%,var(--bg) 58%);
+  color:var(--text);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+button { font:inherit; cursor:pointer; }
+a { color:inherit; }
+.stars {
+  position:fixed; inset:0; pointer-events:none; opacity:.4;
+  background-image:radial-gradient(white 1px,transparent 1px);
+  background-size:49px 49px;
+  z-index:-1;
+}
+nav {
+  display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
+  padding:17px 12px; position:sticky; top:0; z-index:5;
+  background:#100b19eF; border-bottom:1px solid #ffffff12;
+  font-family:Arial,sans-serif; font-size:12px;
+}
+nav a { text-decoration:none; color:var(--soft); }
+nav a:hover { color:white; }
+header {
+  min-height:83vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center;
+  padding:60px 22px 70px; position:relative;
+}
+.eyebrow {
+  color:var(--pink); letter-spacing:4px; text-transform:uppercase;
+  font:11px Arial,sans-serif;
+}
+h1 {
+  font-size:clamp(48px,12vw,83px); line-height:1.06;
+  font-weight:normal; margin:22px 0; letter-spacing:-2px;
+}
+h1 span { color:var(--pink); font-style:italic; }
+header p { max-width:400px; color:var(--muted); font-size:17px; }
+.heart {
+  color:var(--pink); font-size:38px; margin:12px;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse {
+  50% { transform:scale(1.18); text-shadow:0 0 28px #ff8fb8aa; }
+}
+.btn {
+  display:inline-block; padding:13px 23px; border-radius:30px;
+  background:var(--pink); color:#241222; border:0;
+  text-decoration:none; font:13px Arial,sans-serif;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover { transform:translateY(-2px); box-shadow:0 0 22px #ff8fb855; }
+section { padding:65px 20px; max-width:850px; margin:auto; }
+.section-title { text-align:center; margin-bottom:30px; }
+.section-title h2 { font-size:clamp(29px,7vw,42px); font-weight:normal; margin:8px 0; }
+.section-title p { color:var(--muted); margin-top:0; }
+.letter {
+  background:linear-gradient(145deg,#25182f,#171020);
+  border:1px solid #ffb5d526; border-radius:18px;
+  padding:clamp(23px,6vw,44px); box-shadow:0 15px 50px #0003;
+}
+.letter .salutation { color:var(--pink); font-size:23px; }
+.letter p { color:#e9dce9; }
+.signature { color:var(--pink); font-size:23px; font-style:italic; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+.card {
+  background:#21172cdd; border:1px solid #ffffff12; border-radius:15px;
+  padding:20px 15px; text-align:center; min-width:0;
+}
+.card .emoji { font-size:28px; display:block; margin-bottom:8px; }
+.card h3 { font-size:17px; font-weight:normal; color:var(--soft); margin:4px 0 8px; }
+.card p { color:var(--muted); font-size:14px; margin:0; }
+.memory-list { display:grid; gap:12px; }
+.memory {
+  border-left:2px solid var(--pink); background:#21172cbb;
+  padding:17px 19px; border-radius:0 12px 12px 0;
+}
+.memory h3 { color:var(--pink); font-size:18px; font-weight:normal; margin:0 0 4px; }
+.memory p { color:var(--muted); margin:0; font-size:14px; }
+.gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.photo {
+  aspect-ratio:4/5; border-radius:14px; overflow:hidden;
+  background:linear-gradient(145deg,#3b2447,#19101f);
+  position:relative; display:flex; align-items:center; justify-content:center;
+  border:1px solid #ffffff12;
+}
+.photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.photo .placeholder { text-align:center; padding:12px; color:var(--soft); }
+.photo .placeholder span { font-size:32px; display:block; }
+.photo .caption {
+  position:absolute; bottom:0; left:0; right:0; padding:26px 10px 12px;
+  text-align:center; background:linear-gradient(transparent,#100b19e8);
+  color:white; font-size:14px;
+}
+.secret-box {
+  text-align:center; padding:30px 20px; border-radius:18px;
+  border:1px solid #ffb5d52b;
+  background:radial-gradient(ellipse at top,#37213d,#191120);
+}
+.secret-text { display:none; color:var(--soft); font-size:20px; margin:22px auto 0; max-width:480px; }
+.secret-text.show { display:block; animation:appear .8s ease; }
+@keyframes appear { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.heart-button {
+  background:#ff8fb81a; color:var(--pink); border:1px solid #ff8fb866;
+  border-radius:50%; width:72px; height:72px; font-size:31px;
+}
+#heart-count { color:var(--muted); font:13px Arial,sans-serif; margin-top:12px; }
+footer { text-align:center; padding:48px 20px 65px; color:var(--muted); font-size:14px; }
+footer .big-heart { color:var(--pink); font-size:28px; }
+.floating-heart {
+  position:fixed; bottom:-30px; z-index:20; pointer-events:none;
+  animation:float-up 3.5s ease-in forwards;
+}
+@keyframes float-up {
+  0% { opacity:0; transform:translateY(0) rotate(0); }
+  15% { opacity:.95; }
+  100% { opacity:0; transform:translateY(-105vh) rotate(35deg); }
+}
+@media(min-width:650px) {
+  .grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .gallery { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav aria-label="Page navigation">
+  <a href="#letter">LOVE LETTER</a>
+  <a href="#reasons">WHY YOU</a>
+  <a href="#memories">MEMORIES</a>
+  <a href="#gallery">PHOTOS</a>
+  <a href="#secret">SECRET ♡</a>
+</nav>
+
+<header>
+  <div class="eyebrow">A little piece of my heart</div>
+  <div class="heart">♡</div>
+  <h1>For <span>My Love</span></h1>
+  <p>In a world full of ordinary things, you will always be my favourite extraordinary one.</p>
+  <a class="btn" href="#letter">Open your little surprise ↓</a>
+</header>
+
+<section id="letter">
+  <div class="section-title">
+    <div class="eyebrow">Words from my heart</div>
+    <h2>A letter for you</h2>
+    <p>Something I want you to know, today and always.</p>
+  </div>
+  <div class="letter">
+    <div class="salutation">My love, ♡</div>
+    <p>
+      If I could give you one thing in this world, I would give you the
+      ability to see yourself through my eyes. Only then would you
+      understand just how special you are to me.
+    </p>
+    <p>
+      You make ordinary moments feel magical. You give my heart reasons
+      to smile when I least expect it, and somehow, even on the busiest
+      days, a thought of you makes everything feel a little softer.
+    </p>
+    <p>
+      I don't need every day to be perfect. I just want the little
+      moments, the silly laughs, the honest conversations, the quiet
+      comfort, and all the memories we have yet to make.
+    </p>
+    <p>
+      Thank you for being you. Thank you for being someone I can care
+      about so deeply. If I had to choose all over again, I would still
+      want the chance to know you, cherish you, and keep choosing you.
+    </p>
+    <p>
+      This little corner of the internet is just a small reminder that
+      somewhere, someone is thinking of you with so much love.
+    </p>
+    <div class="signature">Always, with love ♡</div>
+  </div>
+</section>
+
+<section id="reasons">
+  <div class="section-title">
+    <div class="eyebrow">A thousand little things</div>
+    <h2>Why it's you</h2>
+    <p>Just a few of the reasons you mean so much to me.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="emoji">♡</span><h3>Your heart</h3><p>The kindness and care you bring into the world.</p></div>
+    <div class="card"><span class="emoji">☾</span><h3>Your presence</h3><p>How even a little time with you can brighten my day.</p></div>
+    <div class="card"><span class="emoji">✧</span><h3>Your smile</h3><p>A tiny thing that can mean everything to me.</p></div>
+    <div class="card"><span class="emoji">∞</span><h3>Being you</h3><p>Not because you're perfect, but because you're you.</p></div>
+  </div>
+</section>
+
+<section id="memories">
+  <div class="section-title">
+    <div class="eyebrow">Little moments, big feelings</div>
+    <h2>Our memories</h2>
+    <p>Some spaces for the moments you never want to forget.</p>
+  </div>
+  <div class="memory-list">
+    <div class="memory"><h3>♡ The beginning</h3><p>Write about how you met, your first conversation, or the moment things began to feel special.</p></div>
+    <div class="memory"><h3>☾ The little things</h3><p>Add an inside joke, a favourite conversation, or a tiny moment that still makes you smile.</p></div>
+    <div class="memory"><h3>✧ More to come</h3><p>There are still so many places to see, laughs to share, and memories waiting for us.</p></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-title">
+    <div class="eyebrow">Captured moments</div>
+    <h2>A little photo gallery</h2>
+    <p>Imagine your favourite pictures here. Replace these placeholders with your photos when you're ready.</p>
+  </div>
+  <div class="gallery">
+    <div class="photo"><div class="placeholder"><span>♡</span>Your favourite photo</div><div class="caption">My favourite moment</div></div>
+    <div class="photo"><div class="placeholder"><span>☾</span>A happy memory</div><div class="caption">That beautiful day</div></div>
+    <div class="photo"><div class="placeholder"><span>✧</span>A special picture</div><div class="caption">You make me smile</div></div>
+    <div class="photo"><div class="placeholder"><span>∞</span>A moment together</div><div class="caption">One for the heart</div></div>
+  </div>
+</section>
+
+<section id="secret">
+  <div class="section-title">
+    <div class="eyebrow">Psst... just for you</div>
+    <h2>A little secret</h2>
+    <p>There's one more thing I wanted to tell you.</p>
+  </div>
+  <div class="secret-box">
+    <div style="font-size:40px;color:var(--pink)">♡</div>
+    <p>Tap the heart to open your surprise.</p>
+    <button class="heart-button" id="secret-button" aria-label="Reveal the secret message" aria-expanded="false">♡</button>
+    <div class="secret-text" id="secret-text">
+      If you ever wonder whether you matter to me, come back to this
+      little page. You are thought of, appreciated, and cared for more
+      than these words could ever explain. And if I get to make you
+      smile today, that's a little win for my heart. I choose you, my love. ♡
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center">
+  <div class="section-title">
+    <div class="eyebrow">Send a little love</div>
+    <h2>Make the stars jealous ✧</h2>
+    <p>Tap below and fill your screen with little hearts.</p>
+  </div>
+  <button class="btn" id="heart-rain">Send me some hearts ♡</button>
+  <div id="heart-count" aria-live="polite">0 hearts sent</div>
+</section>
+
+<footer>
+  <div class="big-heart">♥</div>
+  Made with love, for My Love.
+  <p>Out of all the little things in this universe, you are my favourite.</p>
+  <small>♡ A little reminder, whenever you need one ♡</small>
+</footer>
+
+<script>
+const secretButton = document.getElementById("secret-button");
+const secretText = document.getElementById("secret-text");
+
+secretButton.addEventListener("click", () => {
+  const isOpen = secretText.classList.toggle("show");
+  secretButton.setAttribute("aria-expanded", String(isOpen));
+  secretButton.textContent = isOpen ? "♥" : "♡";
+  if (isOpen) makeHearts(9);
+});
+
+let totalHearts = 0;
+function makeHearts(amount) {
+  const symbols = ["♡", "♥", "💕", "✧"];
+  for (let i = 0; i < amount; i++) {
+    const heart = document.createElement("span");
+    heart.className = "floating-heart";
+    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    heart.style.left = Math.random() * 96 + "vw";
+    heart.style.fontSize = (18 + Math.random() * 22) + "px";
+    heart.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+    document.body.appendChild(heart);
+    heart.addEventListener("animationend", () => heart.remove());
+  }
+}
+document.getElementById("heart-rain").addEventListener("click", () => {
+  makeHearts(24);
+  totalHearts += 24;
+  document.getElementById("heart-count").textContent =
+    totalHearts + (totalHearts === 1 ? " hearts sent" : " hearts sent");
+});
+</script>
+</body>
+</html>
